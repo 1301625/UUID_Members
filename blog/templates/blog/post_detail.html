@@ -1,0 +1,17 @@
+{% extends 'blog/layout.html' %}
+
+
+{% block content %}
+
+    <h1>{{ post.title }}</h1>
+    {{ post.content }}
+    {% if post.photo %}
+        <img src="{{ post.photo.url }}"  >
+    {% else %}
+
+    {% endif %}
+    {{ post.created_at }}
+
+
+    <a href="{% url "blog:post_list" %}">목록</a>
+{% endblock %}

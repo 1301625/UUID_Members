@@ -1,0 +1,24 @@
+{% extends 'blog/layout.html' %}
+{% load imagekit %}
+
+
+{% block content %}
+    {% for post in post_list %}
+
+        <a href="{{ post.get_absolute_url }}">
+            {{ post.title }}</a>
+        <p>{{ post.content }}</p>
+        {% if post.photo %}
+            <div class="thumbnail">
+                <a href="{{ post.get_absolute_url }}">
+                    <img src="{{ post.photo.url }}" alt="" width=100px; height=100px;>
+                </a>
+            </div>
+        {% else %}
+            <img src="/media/post_photo/businessman.png" width=100px; height=100px;>
+        {% endif %}
+        <br>
+    {% endfor %}
+
+    <a href="{% url "blog:post_new" %}">생성</a>
+{% endblock %}
